@@ -1,0 +1,278 @@
+// Reset CSS
+@import url("https://cdn.jsdelivr.net/gh/jgthms/minireset.css@master/minireset.min.css");
+
+a {
+	text-decoration: none;
+}
+
+// Fonts and colors
+$cl-primary: hsl(300, 43%, 22%);
+$cl-secondary: hsl(333, 80%, 67%);
+$cl-paragraph: hsl(303, 10%, 53%);
+$cl-reviews: hsl(300, 24%, 96%);
+$cl-white: hsl(0, 0%, 100%);
+
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;500;700&display=swap');
+
+body {
+	font-family: "League Spartan", cursive, Arial, Helvetica, sans-serif;
+	font-size: 16px;
+}
+
+// Break-points
+$small-down: 522px;
+$small-up: 523px;
+$medium-down: 870px;
+$medium-up: 871px;
+$large-down: 1073px;
+$large-up: 1074px;
+$extralarge-down: 1108px;
+$extralarge-up: 1109px;
+
+// Vertical and horizontal alignement
+.parent-container {
+	display: table;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background: url("../images/bg-pattern-top-mobile.svg") no-repeat top left;
+
+	@media screen and (min-width: $large-up) {
+		background: url("../images/bg-pattern-top-desktop.svg") no-repeat top left;
+	}
+}
+
+.child-container {
+	display: table-cell;
+	vertical-align: middle;
+	text-align: center;
+	background: url("../images/bg-pattern-bottom-mobile.svg") no-repeat bottom right;
+
+	@media screen and (min-width: $large-up) {
+		background: url("../images/bg-pattern-bottom-desktop.svg") no-repeat bottom right;
+	}
+}
+
+// Here we go
+.main-container {
+	@media screen and (max-width: $medium-down) {
+		margin: 5px 20px;
+	}
+
+	@media screen and (min-width: $medium-up) and (max-width: $large-down) {
+		margin: 5px 60px;
+	}
+
+	@media screen and (min-width: $large-up) {
+		margin: 5px 120px;
+	}
+}
+
+main {
+	@media screen and (min-width: $medium-up) and (max-width: $large-down) {
+		display: grid;
+		grid-template-columns: 1fr 2fr;
+		column-gap: 20px;
+		text-align: left;
+
+		.reviews {
+			margin: 90px 0px 50px 0px;
+		}
+	}
+
+	@media screen and (min-width: $large-up) {
+		display: grid;
+		grid-template-columns: 2fr 3fr;
+		column-gap: 30px;
+		text-align: left;
+
+		.reviews {
+			margin: 80px 0px 20px 0px;
+		}
+	}
+
+	@media screen and (min-width: $extralarge-up) {
+		.reviews {
+			margin: 70px 0px 20px 0px;
+		}
+		
+		column-gap: 40px;
+	}
+}
+
+.main-text {
+	h1 {
+		color: $cl-primary;
+		font-size: 34px;
+		font-weight: 700;
+		margin: 80px 0px 25px 0px;
+	}
+
+	p {
+		color: $cl-paragraph;
+		font-size: 16px;
+		line-height: 24px;
+	}
+
+	@media screen and (min-width: $large-up) and (max-width: $extralarge-down) {
+		h1 {
+			font-size: 36px;
+		}
+		
+		p {
+			font-size: 17px;
+		}
+	}
+
+	@media screen and (min-width: $extralarge-up) {
+		h1 {
+			font-size: 38px;
+		}
+		
+		p {
+			font-size: 19px;
+		}
+	}
+}
+
+.reviews {
+	margin: 35px 0px;
+
+	&__review {
+		padding: 10px;
+		margin: 10px 0px;
+		background-color: $cl-reviews;
+		border-radius: 10px;
+
+		img {
+			margin-right: 5px;
+		}
+
+		span {
+			display: block;
+			color: $cl-primary;
+			font-weight: 700;
+
+			@media screen and (max-width: $small-down) {
+				margin-top: 10px;
+			}
+		}
+	}
+
+	@media screen and (min-width: $small-up) {
+		&__review {
+			padding: 18px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+
+			&__stars {
+				margin-right: 20px;
+			}
+		}
+		
+		@media screen and (max-width: $medium-down) {
+			&__review {
+				width: 80%;
+			}
+			
+			&__review-1 {
+				margin-left: 5%;
+			}
+			&__review-2 {
+				margin-left: 10%;
+			}
+			&__review-3 {
+				margin-left: 15%;
+			}
+		}
+
+		@media screen and (min-width: $medium-up) {
+			&__review {
+				width: 80%;
+			}
+			
+			&__review-1 {
+				margin-left: 10%;
+			}
+			&__review-2 {
+				margin-left: 15%;
+			}
+			&__review-3 {
+				margin-left: 20%;
+			}
+		}
+	}
+
+}
+
+.consumer-reviews {
+	&__review {
+		margin: 20px 0px;
+		padding: 35px 35px 10px 35px;
+		background-color: $cl-primary;
+		border-radius: 10px;
+
+		p {
+			line-height: 22px;
+			color: $cl-reviews;
+			margin: 25px 0px 30px 0px;
+			text-align: left;
+		}
+	}
+
+	@media screen and (min-width: $medium-up) {
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr;
+		column-gap: 2%;
+		margin-top: 50px;
+		
+		&__review {
+			transition: transform 0.3s;
+
+			&:hover {
+				transform: scale(1.1);
+			}
+		}
+
+		&__review-1 {
+			margin-top: 10px;
+			margin-bottom: 30px;
+		}
+		&__review-2 {
+			margin-top: 30px;
+			margin-bottom: 10px;
+		}
+		&__review-3 {
+			margin-top: 50px;
+			margin-bottom: -10px;
+		}
+	}
+}
+
+.consumer-profile {
+	display: flex;
+	align-items: center;
+
+	img {
+		width: 40px;
+		border-radius: 100%;
+		margin: 0px 15px 0px 0px;
+	}
+
+	span {
+		display: block;
+	}
+
+	&__text {
+		&__name {
+			color: $cl-reviews;
+			font-weight: 500;
+		}
+
+		&__status {
+			margin-top: 5px;
+			color: $cl-secondary;
+		}
+	}
+}
